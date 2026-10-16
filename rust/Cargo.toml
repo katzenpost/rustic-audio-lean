@@ -1,0 +1,20 @@
+[package]
+name = "rustic-audio-lean"
+version = "0.1.0"
+edition = "2021"
+license = "AGPL-3.0-only"
+publish = false
+
+[lib]
+name = "rustic_audio_lean"
+crate-type = ["staticlib"]
+
+[dependencies]
+lean-sys = { git = "https://github.com/katzenpost/lean-sys", rev = "ac11ff152cc82bccd0ef18f45384ac5acb091260", default-features = false, features = ["mimalloc"] }
+rustic_audio_tool = { git = "https://github.com/katzenpost/Rustic_Audio_PyO3", rev = "7b74a839c81993c7d8d7939f3c1a8faccf691300", default-features = false }
+
+[patch.crates-io]
+opus-rs = { git = "https://github.com/katzenpost/Rustic_Audio_PyO3", rev = "7b74a839c81993c7d8d7939f3c1a8faccf691300" }
+
+[profile.release]
+panic = "abort"
